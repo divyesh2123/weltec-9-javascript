@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="table">
+
+
+    </table>
+
+
+    <script>
+
+displayData();
+      
+        function displayData()
+        {
+            fetch("https://63ac1dfa34c46cd7ae77dabf.mockapi.io/api/news").then(y=>y.json()).then(y=> {
+
+let t=  y.map((value,index)=> {
+
+      return(`<tr><td>${value.publishedBy}</td><td>${value.title}</td><td>
+          <button onclick="removeNews(${value.id})">Delete</button></td>
+          <td><button o>Edit</button></td>
+          </tr>`)
+
+
+
+  }).join("");
+
+  document.getElementById("table").innerHTML = t;
+
+
+})
+        }
+        function removeNews(id)
+        {
+            fetch("https://63ac1dfa34c46cd7ae77dabf.mockapi.io/api/news/"+ id, {
+                method : "DELETE"
+            }).then(y=> {
+                displayData();
+            });
+        }
+
+        function editNews(id)
+        {
+            //GET BY ID
+
+        }
+
+        function saveNews()
+        {
+            //index in hindden field
+            //Edit
+            //ADD
+        }
+
+
+    </script>
+
+    
+</body>
+</html>
