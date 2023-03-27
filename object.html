@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  
+
+    <table id="display"></table>
+    <script>
+
+    
+
+        let employee =[ 
+            
+       {
+        firstname: "test",
+        lastname : "test1"
+
+        },
+
+        {
+
+            firstname : "divyesh",
+            lastname:"patel"
+        },
+        {
+
+firstname : "rahul",
+lastname:"patel"
+}
+    
+    
+    
+    ]
+
+    let d = employee.map(function(a) {
+
+        return `<tr><td>${a.firstname}</td><td>${a.lastname}</td></tr>`
+    })
+
+       
+       document.getElementById("display").innerHTML = d.join("");
+
+    </script>
+    
+</body>
+</html>
