@@ -473,7 +473,8 @@ const myApiData = [
 
   const myhtml = myApiData.map(function(value,index) {
 
-    let myButton  = value.Images.map(function(valuebutton,indexbutton) {
+    let myButton  = value.Images.map(
+      function(valuebutton,indexbutton) {
 
         return(`<button type="button"
          data-bs-target="#demo${index}"

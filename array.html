@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="item"  value="di"/>
+    <input type="hidden" id="index" value="-1"/>
+    <input type="button" value="Save"  onclick="SaveInformation()"/>
+
+    <div id="display"></div>
+    <script>
+
+        let mylist = [];
+
+        function SaveInformation()
+        {
+            let index = document.getElementById("index").value;
+            let v = document.getElementById("item").value;
+            if(index >=0)
+            {
+                mylist[index] =v;
+            }
+            else
+            {
+                mylist.push(v);
+            }
+           
+            
+
+         display();
+        }
+
+        function display()
+        {
+            let myhtml = mylist.map(function(value,index){
+
+
+                return (`<div>${value}
+                     <button onclick="deleteitem(${index})">Delete</button>
+                     <button onclick="edititem(${index})">Edit</button>
+                     </div>`)
+            });
+
+
+            document.getElementById("display").innerHTML = myhtml.join("");
+
+        }
+
+        function deleteitem(index)
+        {
+          mylist.splice(index,1);
+          display();   
+
+        }
+
+        function edititem(index)
+        {
+            document.getElementById("item").value = mylist[index];
+            document.getElementById("index").value = index;
+        }
+
+
+
+        
+
+    </script>
+    
+</body>
+</html>
