@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        
+        let mycart = [
+            {
+                Id: 1,
+                price: 45,
+                count :2,
+                name: "product1"
+            },
+            {
+                Id: 2,
+                price: 245,
+                count :1,
+                name: "product2"
+            }
+
+        ]
+
+     let t=   mycart.reduce(function(pre,curr){
+
+
+            return pre + curr.price * curr.count;
+        },0)  
+
+
+        console.log(t);
+    </script>
+    
+</body>
+</html>
