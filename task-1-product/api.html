@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        //https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=20&format=json&origin=*&srsearch=react
+
+        fetch("https://jsonplaceholder.typicode.com/photos")
+        .then(function(value){
+
+            return value.json();
+        }).then(function(a) {
+
+            console.log(a);
+        })
+
+
+
+    </script>
+    
+</body>
+</html>
