@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let myTaskStatus = [
+            {
+                UserId: 1,
+                TaskList : [
+                    {   
+                        Id:1,
+                        Name: "Coding",
+                        Status: true
+
+
+                    },
+                    {   
+                        Id:1,
+                        Name: "Unit Testing",
+                        Status: true
+
+
+                    }
+
+
+                ]
+
+
+            },
+
+            {
+                UserId: 2,
+                TaskList : [
+                    {   
+                        Id:1,
+                        Name: "Coding",
+                        Status: false
+
+
+                    },
+                    {   
+                        Id:1,
+                        Name: "Unit Testing",
+                        Status: true
+
+
+                    }
+
+
+                ]
+
+
+            }
+
+        ]
+
+        let finalOutPut = myTaskStatus.map(function(value,index){
+
+            let obj = {
+                id : value.UserId,
+                taskstatus : value.TaskList.every(function(a,b){
+
+                    return a.Status == true;
+                })
+
+            }
+
+            return obj;
+
+
+        })
+
+        console.log(finalOutPut);
+
+    </script>
+    
+</body>
+</html>
