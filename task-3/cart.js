@@ -209,6 +209,7 @@ const products = [
 
 ;
 
+const carts = [];
 
 function display(arrayProduct)
 {
@@ -221,14 +222,14 @@ function display(arrayProduct)
     })
 
 
-    let productcards = arrayProduct.map(function(value){
+    let productcards = arrayProduct.map(function(value,index){
 
         return (`<div class="col-4"><div class="card" style="width:400px">
         <img class="card-img-top" src="${value.image}" alt="Card image">
         <div class="card-body">
-          <h4 class="card-title">John Doe</h4>
+          <h4 class="card-title">${value.title}</h4>
           <p class="card-text">Some example text.</p>
-          <a href="#" class="btn btn-primary">See Profile</a>
+          <button class="btn btn-primary" onclick="addtocart(${index})">Add To Cart</button>
         </div>
       </div></div>`)
 
@@ -236,7 +237,7 @@ function display(arrayProduct)
 
     document.getElementById("displayProducts").innerHTML =productcards.join("")
 
-    document.getElementById("displayButton").innerHTML = categoryBtn.join("");
+   // document.getElementById("displayButton").innerHTML = categoryBtn.join("");
     
     console.log(arrayProduct);
 }
@@ -253,4 +254,45 @@ function filterByCategory(filtercat)
     display(filterproducts);
 
 }
+
+function addtocart(index)
+{
+  let d = products[index];
+
+
+
+  let myindex =   carts.findIndex(function(value){
+
+        return value.title == d.title;
+    })
+
+    if(myindex <0)
+    {
+      d["quan"] =1;
+  carts.push(d);
+    }
+    else
+    { 
+      carts[myindex].quan = carts[myindex].quan+1;
+
+    }
+
+
+    document.getElementById("d").innerText = carts.length;
+  console.log(carts);
+
+}
+
+function displayPrice()
+{
+
+    let p = carts.reduce(function(pre,cuu){
+
+      return pre +  cuu.quan * cuu.price;
+
+    },0)
+
+    console.log(p);
+}
+
 
