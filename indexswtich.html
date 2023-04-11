@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        
+        let myarray = 10000;
+        let dis = 0;
+        // 0-5000 ->5%
+        // 5000-1000->10
+        // 10000-20000->15%
+        // 20000->20%
+
+        if(myarray>=0 && myarray<5000)
+        {
+            dis = discount(myarray,5)
+        
+        }
+        else if(myarray>=5000 && myarray<10000)
+        {
+            dis = discount(myarray,10)
+        }
+        else if(myarray>=10000 && myarray<20000)
+        {
+            dis = discount(myarray,15)
+        }
+        else
+        {
+            dis = discount(myarray,20)
+
+        }
+
+        console.log(dis);
+
+
+        function discount(input,pe)
+        {
+
+            return  input - (input*pe/100);
+        }
+
+        
+
+
+    </script>
+    
+</body>
+</html>
