@@ -114,3 +114,76 @@ const products = [
 ];
 
 
+function display()
+{
+  let html = products.map(function(value) {
+
+    return (` <article class="product">
+    <img
+      src="${value.image}"
+      alt=""
+    />
+    <footer>
+      <h5 class="product-name">${value.title}</h5>
+      <h5 class="product-name">${value.company}</h5>
+      <span class="product-price">${value.price}</span>
+    </footer>
+  </article>`)
+
+  })
+
+  document.getElementById("products").innerHTML = html.join("");
+
+}
+
+function search()
+{
+
+
+}
+
+function arrangeData()
+{
+  let d = document.getElementById("arr").value;
+  products.sort(function(a,b) {
+
+    switch(d)
+    {
+
+      case "PA":
+
+        if(a.price > b.price)
+        {
+          return -1;
+        }
+        else
+        {
+          return 1;
+        }
+
+      break;
+
+      case "PD":
+
+      if(a.price > b.price)
+      {
+        return 1;
+      }
+      else
+      {
+        return -1;
+      }
+
+
+      break;
+    }
+
+    display();
+
+  })
+
+}
+
+display();
+
+
