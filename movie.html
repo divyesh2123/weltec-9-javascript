@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table id="display"></table>
+    <script>
+
+        fetch("https://api.themoviedb.org/3/discover/movie?api_key=be14097e98b1782bf6407fbbc06fc63b&language=en-US&sort_by=popularity.desc&include_adult=false")
+        .then(function(value) {
+
+            return value.json()
+        }).then(function(value) {
+           
+            displayInfo(value);
+        })
+
+        function displayInfo(mydata)
+        {
+
+          let myhtml =  mydata.results.map(function(value) {
+
+                return(`<tr><td>${value.original_language}</td><td>
+                    ${value.original_title}</td>
+                    <td>${value.overview}</td><td>${value.release_date}
+                    </td></tr>`)
+
+            })
+
+
+            document.getElementById("display").innerHTML = myhtml.join("");
+        }
+
+    </script>
+</body>
+</html>
