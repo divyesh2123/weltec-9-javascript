@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="title" placeholder="Please Enter Title"/>
+    <input type="text" id="fname" placeholder="Please Enter firstname"/>
+    <input type="text" id="lname" placeholder="Please Enter Lastname"/>
+    <input type="text" id="email" placeholder="Please Enter email"/>
+    <input type="text" id="password" placeholder="Please Enter password"/>
+    <input type="text" id="confirm" placeholder="Please Enter confirm"/>
+    <input type="checkbox" id="check" />
+
+    <input type="button" value="Save"  onclick="SaveInfo()"/>
+
+    <script>
+
+        function SaveInfo()
+        {
+        let obj =    {
+  "title": document.getElementById("title").value,
+  "firstName": document.getElementById("fname").value,
+  "lastName": document.getElementById("lname").value,
+  "email": document.getElementById("email").value,
+  "password": document.getElementById("password").value,
+  "confirmPassword": document.getElementById("confirm").value,
+  "acceptTerms": document.getElementById("check").checked
+}
+
+fetch("https://real-pear-fly-kilt.cyclic.app/accounts/register",{
+    method : "post",
+    body: JSON.stringify(obj),
+    headers : {
+        'Content-Type': "application/json"
+    }
+}).then(function(value) {
+    return value.json();
+}).then(function(value) {
+    console.log(value);
+})
+
+        }
+
+
+    </script>
+</body>
+</html>

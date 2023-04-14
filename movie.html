@@ -11,12 +11,14 @@
     <table id="display"></table>
     <script>
 
+        let array= [];
         fetch("https://api.themoviedb.org/3/discover/movie?api_key=be14097e98b1782bf6407fbbc06fc63b&language=en-US&sort_by=popularity.desc&include_adult=false")
         .then(function(value) {
 
             return value.json()
         }).then(function(value) {
            
+            array = value.results;
             displayInfo(value);
         })
 
