@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text"  id="searchTerm"/>
+
+    <input type="button" value="Save" onclick="SearchInfo()" />
+
+    <input type="button" value="Clear" onclick="ClearInfo()" />
+
+
+    
+    <script>
+
+        let array = [];
+
+        fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(function(value) {
+            return value.json();
+        }).then(function(value) {
+
+            array = value;
+
+            display(array)
+        })
+
+        function ClearInfo()
+        {
+            document.getElementById("searchTerm").value = "";
+            display(array);
+        }
+
+        function SearchInfo()
+        {
+            let searchTerm =document.getElementById("searchTerm").value;
+            let t = array.filter(function(value){
+
+               return  value.title.indexOf(searchTerm) >=0 || value.body.indexOf(searchTerm) >=0; 
+            })
+
+            display(t);
+
+        }
+
+        function display(arraynew)
+        {   
+            console.log(arraynew)
+
+        }
+    </script>
+</body>
+</html>
