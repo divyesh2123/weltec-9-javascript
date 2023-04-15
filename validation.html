@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let myEmployee = [
+            {
+                firstname: "",
+                lastname:"asdfffffffff1223",
+                address : "",
+                city: ""
+
+            },
+            {
+                firstname: "s",
+                lastname:"t",
+                address : "",
+                city: "sd"
+            }
+
+        ]
+
+
+        function validate(key,value)
+        {
+            
+
+            switch(key)
+            {
+                case "firstname" :
+
+                if(value =="")
+                {
+                    
+                    return "Please Enter Firstname";
+                }
+                else if(value.length <=2)
+                {
+
+                return "Please Enter value more than 2 ch"
+                }
+                else if(value.length >=16)
+                {
+                 return "value should be less than 16"
+                }
+
+
+                break;
+
+            }
+
+         
+
+        }
+
+
+     let errors=    myEmployee.map(function(value) {
+
+            let obj = {};
+            for(let key in value)
+            {
+                let message = validate(key,value[key])
+                
+                obj[key] = message;
+
+             
+            }
+
+            return obj;
+          
+
+        })
+
+
+        console.log(errors);
+    </script>
+    
+</body>
+</html>
