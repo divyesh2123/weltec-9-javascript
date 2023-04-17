@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" placeholder="first name" id="fname"/>
+    <input type="text" placeholder="last name" id="lname"/>
+
+    <input type="button" onclick="SaveInfo()" value="SaveInfo"/>
+
+    <table id="display"></table>
+
+    <script>
+
+        function SaveInfo()
+        {
+            let fname = document.getElementById("fname").value;
+            let lname = document.getElementById("lname").value;
+
+
+            let mycurrentvalue = JSON.parse(localStorage.getItem("user")) || [];
+
+            console.log(mycurrentvalue);
+
+            let obj = {
+
+                "firstname" :fname,
+                "lastname" : lname
+            }
+
+            mycurrentvalue.push(obj);
+
+          //  console.log(obj);
+
+
+            localStorage.setItem("user",JSON.stringify(mycurrentvalue));
+
+            display();
+        }
+
+        function display()
+        {
+            let items = JSON.parse(localStorage.getItem("user"));
+
+            let htmls = items.map(function(value,index) {
+
+         return(`<tr><td>${value.firstname}</td><td>${value.lastname}</td>
+            <td><button onclick=deleteItem(${index})>Delete</button></td>
+            <td><button>Edit</button></td>
+            </tr>`)
+
+            })
+
+
+            document.getElementById("display").innerHTML = htmls.join("");
+
+
+
+        }
+
+        function deleteItem(index)
+        {
+
+            let items = JSON.parse(localStorage.getItem("user"));
+
+        
+          
+
+            items.splice(index,1);
+
+
+            localStorage.setItem("user",JSON.stringify(items));
+
+            display();
+
+        }
+
+
+        display();
+
+    </script>
+    
+</body>
+</html>
