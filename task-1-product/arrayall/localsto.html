@@ -17,13 +17,21 @@
 
     <script>
 
+        let editindex = -1;
+
+        const getItems = () =>JSON.parse(localStorage.getItem("user")) 
+  || [];
+
+
+
         function SaveInfo()
         {
             let fname = document.getElementById("fname").value;
             let lname = document.getElementById("lname").value;
 
 
-            let mycurrentvalue = JSON.parse(localStorage.getItem("user")) || [];
+  let mycurrentvalue = JSON.parse(localStorage.getItem("user")) 
+  || [];
 
             console.log(mycurrentvalue);
 
@@ -33,11 +41,20 @@
                 "lastname" : lname
             }
 
+            if(editindex == -1)
+            {
+
             mycurrentvalue.push(obj);
+
+            }
+            else
+            {
+                mycurrentvalue[editindex] = obj;
+            }
 
           //  console.log(obj);
 
-
+          editindex = -1;
             localStorage.setItem("user",JSON.stringify(mycurrentvalue));
 
             display();
@@ -45,13 +62,15 @@
 
         function display()
         {
-            let items = JSON.parse(localStorage.getItem("user"));
+           // let items = JSON.parse(localStorage.getItem("user"));
+
+           let items = getItems();
 
             let htmls = items.map(function(value,index) {
 
          return(`<tr><td>${value.firstname}</td><td>${value.lastname}</td>
             <td><button onclick=deleteItem(${index})>Delete</button></td>
-            <td><button>Edit</button></td>
+            <td><button onclick=editInfo(${index})>Edit</button></td>
             </tr>`)
 
             })
@@ -80,6 +99,19 @@
 
         }
 
+        editInfo = (index)=> {
+
+            let items = JSON.parse(localStorage.getItem("user"));
+
+            let currentobj = items[index];
+
+
+            editindex = index;
+           
+            document.getElementById("fname").value = currentobj.firstname;
+            document.getElementById("lname").value = currentobj.lastname;            
+
+        }
 
         display();
 
