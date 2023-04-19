@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="display"></table>
+
+    <script>
+
+        let t =  JSON.parse(localStorage.getItem("user"));
+
+        fetch("https://real-pear-fly-kilt.cyclic.app/accounts",{
+
+            headers : {
+
+                "Authorization": `Bearer ${t.jwtToken}`
+
+            }
+
+        })
+        .then(value=>value.json())
+        .then(value => {
+
+          let html=  value.map((obj)=> {
+
+
+                return(`<tr><td>${obj.firstName}</td><td>${obj.lastName}</td>
+                    <td>${obj.email}</td>
+                    <td>
+                        <button>Delete</button>
+                    </td>
+                    </tr>`)
+
+            })
+
+            document.getElementById("display").innerHTML = html.join("");
+
+          
+        })
+
+     
+        
+
+    </script>
+    
+</body>
+</html>
