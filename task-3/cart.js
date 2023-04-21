@@ -214,6 +214,7 @@ const carts = [];
 function display(arrayProduct)
 {
 
+  
     let categoryBtn = products.map(function(value){
 
         return(`<button class="btn btn-primary" 
@@ -224,11 +225,33 @@ function display(arrayProduct)
 
     let productcards = arrayProduct.map(function(value,index){
 
+      let d= document.getElementById("term").value;
+
+
+      let mytitle = "";
+    
+      if(d == "")
+      {
+        mytitle = value.title;
+        
+      }
+      else
+      {
+        mytitle = `${value.title.slice(0,value.title.indexOf(d))}
+        <span style="color:red">
+          ${value.title.substr(value.title.indexOf(d),d.length)}
+
+        
+        </span>    ${value.title.substr(value.title.indexOf(d)+ d.length)}`;
+      }
+    
+
+
         return (`<div class="col-4"><div class="card" style="width:400px">
         <img class="card-img-top" src="${value.image}" alt="Card image">
         <div class="card-body">
-          <h4 class="card-title">${value.title}</h4>
-          <p class="card-text">Some example text.</p>
+          <h4 class="card-title">${mytitle}</h4>
+          <p class="card-text" id="${index}" onclick="readmore(${index})">${value.description.slice(0,22).concat("<a href='#'>...Read More</a>")}</p>
           <button class="btn btn-primary" onclick="addtocart(${index})">Add To Cart</button>
         </div>
       </div></div>`)
@@ -295,4 +318,39 @@ function displayPrice()
     console.log(p);
 }
 
+function readmore(index)
+{
+  let d = document.getElementById(index).innerText;
 
+  if(d.includes("Read More") == true)
+  {
+    document.getElementById(index).innerHTML = products[index].description.concat("...readless");
+  }
+  else
+  {
+    document.getElementById(index).innerHTML = products[index].description.slice(0,22).concat("...Read More");
+  }
+
+
+
+}
+
+function mysearchInfo()
+{
+
+  let d = document.getElementById("term").value;
+
+
+  let htmldata = products.filter((value,index)=> {
+
+    return value.title.toLocaleLowerCase().includes(d.toLocaleLowerCase());
+
+
+  });
+
+  display(htmldata);
+
+  console.log(htmldata);
+
+  
+}

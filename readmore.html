@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="display" onclick="mydisplay()"></div>
+    
+    <script>
+
+    let isReadmore = false;
+        let mystring = "This is the string This is the stirng This is the string This is the stirnThis is the string This is the stirnThis is the string This is the stirnThis is the string This is the stirnThis is the string This is the stirnThis is the string This is the stirnThis is the string This is the stirnThis is the string This is the stirn";
+
+    
+
+        function mydisplay()
+        {
+            isReadmore = !isReadmore;
+            if(isReadmore)
+            {
+
+
+            document.getElementById("display").innerHTML = mystring.slice(0,25).
+            concat(" <a href='#'>...readmore </a>");
+
+            }
+            else
+            {
+                 document.getElementById("display").innerHTML =
+                  mystring.concat("... readless");
+            }
+        }
+
+        mydisplay();
+    </script>
+</body>
+</html>
