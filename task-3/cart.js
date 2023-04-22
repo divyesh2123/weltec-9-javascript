@@ -320,16 +320,33 @@ function displayPrice()
 
 function readmore(index)
 {
-  let d = document.getElementById(index).innerText;
+  console.log(index);
 
-  if(d.includes("Read More") == true)
+
+ 
+
+  for(let i=0;i<products.length;i++)
   {
-    document.getElementById(index).innerHTML = products[index].description.concat("...readless");
+    if(i == index)
+    {
+      let d = document.getElementById(index).innerText;
+      if(d.includes("Read More") == true)
+      {
+        document.getElementById(index).innerHTML = products[index].description.concat("...readless");
+      }
+      else
+      {
+        document.getElementById(index).innerHTML = products[index].description.slice(0,22).concat("...Read More");
+      }
+      
+    }
+    else
+    {
+
+    document.getElementById(i).innerHTML = products[i].description.slice(0,22).concat("...Read More");
+    }
   }
-  else
-  {
-    document.getElementById(index).innerHTML = products[index].description.slice(0,22).concat("...Read More");
-  }
+
 
 
 

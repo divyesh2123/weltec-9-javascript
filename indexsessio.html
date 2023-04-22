@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text"  id="fname"/>
+    <input type="text"  id="lname"/>
+  
+        <input type="text" id="address1" />
+        <input type="text" id="address2" />
+
+        <select id="city">
+
+            <option>Vadodara</option>
+            <option>Anand</option>
+
+        </select>
+
+        <select id="state">
+
+            <option>Gujrat</option>
+            <option>Maha</option>
+
+        </select>
+
+        <button  onclick="AddData()">Add Data</button>
+
+        <table id="display"></table>
+
+        <script>
+
+            function AddData()
+            {
+                let array = JSON.parse(sessionStorage.getItem("emp")) || [];
+
+                let obj = {
+
+                    firstname : document.getElementById("fname").value,
+                    lname: document.getElementById("lname").value,
+                    address : {
+                        address1 : document.getElementById("address1").value,
+                        address2 : document.getElementById("address2").value,
+                        city : document.getElementById("city").value,
+                        state: document.getElementById("state").value
+                    }
+
+
+                }
+
+                array.push(obj);
+
+
+                sessionStorage.setItem("emp", JSON.stringify(array));
+
+                display();
+
+            }
+
+            function display()
+            {
+                let array = JSON.parse(sessionStorage.getItem("emp")) || [];
+
+              let myhtml =  array.map((value,index)=> {
+
+                return (`<tr><td>${value.firstname}</td><td>${value.lname}</td>
+                    <td>${value.address.address1}</td><td>${value.address.address2}</td>
+                    <td><button onclick="deletedata(${index})">delete</button>
+                    </td><td><button>edit</button></td></tr>`)
+
+                })
+
+                document.getElementById("display").innerHTML = myhtml.join("");
+
+
+            }
+
+            function edit()
+            {
+
+
+            }
+
+            function deletedata(index)
+            {
+                let array = JSON.parse(sessionStorage.getItem("emp")) || [];
+
+                array.splice(0,1);
+
+                sessionStorage.setItem("emp", JSON.stringify(array));
+
+                display();
+
+            }
+
+            display();
+
+
+        </script>
+
+    
+</body>
+</html>

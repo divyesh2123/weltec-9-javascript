@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let myarray =[2,3,4,1,2,3,1,2,3];
+
+        let d=   myarray.reduce((pre,current)=> {
+
+                if(!pre.includes(current))
+                {
+                    pre.push(current);
+                }
+
+                return pre;
+
+            },[])
+
+
+        console.log(d);
+
+
+        let d1=   myarray.reduce((pre,current)=> {
+
+
+if (myarray.indexOf(current) != myarray.lastIndexOf(current) && !pre.includes(current))
+    {
+
+        pre.push(current);
+
+    }
+
+    return pre;
+
+},[])
+
+console.log(d1);
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
