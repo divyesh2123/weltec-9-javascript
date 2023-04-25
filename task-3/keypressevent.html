@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" onkeypress="mykeypress(event)" />
+
+    <script>
+
+        let mynumbers = 1223123124234.56;
+
+        console.log(mynumbers.toLocaleString('hi-In'))
+        function mykeypress(event)
+        {
+            if(event.charCode >=47  && event.charCode <=56)
+            {
+                event.returnValue = true;
+
+            }
+            else
+            {
+                event.returnValue = false;
+ 
+            }
+          // 
+        }
+
+
+    </script>
+</body>
+</html>

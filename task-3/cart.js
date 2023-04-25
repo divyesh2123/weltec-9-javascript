@@ -371,3 +371,28 @@ function mysearchInfo()
 
   
 }
+
+function cartDisplay()
+{
+  console.log(carts);
+
+
+    $('#myModal').modal('show');
+ 
+  let t = carts.map((value)=> {
+
+    return(`<div>
+      <img height="200" width="200" src=${value.image} />
+      <input type="text" value=${value.quan}>
+      <button> + </button>
+      <button> - </button>
+      <span>${value.price}</span>
+    
+    </div>`)
+
+  })
+
+  document.getElementById("cartDisplay").innerHTML = t.join(" ");
+
+
+}
