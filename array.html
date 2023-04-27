@@ -37,7 +37,10 @@
 
         function display()
         {
-            let myhtml = mylist.map(function(value,index){
+            let myhtml = '';
+            try
+            {
+             myhtml = mylist.map(function(value,index){
 
 
                 return (`<div>${value}
@@ -47,7 +50,20 @@
             });
 
 
-            document.getElementById("display").innerHTML = myhtml.join("");
+        
+
+        }
+        catch(e)
+        {
+            myhtml = '';
+            console.log(e);
+        }
+
+        finally
+        {
+            document.getElementById("display").innerHTML = 
+            myhtml.length > 0? myhtml.join("") : "no record found";
+        }
 
         }
 
@@ -60,8 +76,16 @@
 
         function edititem(index)
         {
+            try
+            {
             document.getElementById("item").value = mylist[index];
             document.getElementById("index").value = index;
+
+            }
+            catch(error)
+            {
+                console.log(error)
+            }
         }
 
 
