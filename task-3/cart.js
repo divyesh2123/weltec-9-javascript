@@ -248,7 +248,7 @@ function display(arrayProduct)
 
 
         return (`<div class="col-4"><div class="card" style="width:400px">
-        <img class="card-img-top" src="${value.image}" alt="Card image">
+        <img class="card-img-top" src="${value.image}" alt="Card image" draggable="true" ondragstart="drag(event,${index})" >
         <div class="card-body">
           <h4 class="card-title">${mytitle}</h4>
           <p class="card-text" id="${index}" onclick="readmore(${index})">${value.description.slice(0,22).concat("<a href='#'>...Read More</a>")}</p>
@@ -263,6 +263,11 @@ function display(arrayProduct)
    // document.getElementById("displayButton").innerHTML = categoryBtn.join("");
     
     console.log(arrayProduct);
+}
+
+
+function drag(ev,id) {
+  ev.dataTransfer.setData("text",id);
 }
 
 display(products);
@@ -395,4 +400,15 @@ function cartDisplay()
   document.getElementById("cartDisplay").innerHTML = t.join(" ");
 
 
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+ 
+  addtocart(data);
 }
