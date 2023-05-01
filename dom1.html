@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="num" />
+
+    <input type="button" onclick="addNumbers()"  value="save"/>
+
+    <div>5  
+
+            <input type="checkbox" >
+            
+            <button>+</button>
+            <button>-</button>
+
+    </div>
+    <div>2
+        <input type="checkbox" >
+        <button>+</button>
+        <button>-</button>
+
+    </div>
+    <div>3
+        <input type="checkbox" >
+        <button>+</button>
+        <button>-</button>
+    </div>
+    <div>4
+        <input type="checkbox" >
+        <button>+</button>
+        <button>-</button>
+    </div>
+    <div>4
+
+        <input type="checkbox" >
+        <button>+</button>
+        <button>-</button>
+    </div>
+
+    <script>
+
+        function addNumbers()
+        {
+
+            let p = document.getElementsByTagName("div");
+
+            for(let i=0;i<5;i++)
+            {
+                p[i].innerHTML = parseInt( p[i].innerText) +  parseInt( document.getElementById("num").value);
+            }
+        }
+
+    </script>
+
+    
+</body>
+</html>
