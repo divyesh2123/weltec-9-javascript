@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckBox Inheritance</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+  
+</head>
+<body>
+    <section>
+        <div class="container-fluid">
+            <div class="row m-2">
+                <div class="form-check text-black">
+                    <input class="form-check-input" type="checkbox" data-value="" name="checkbox" value="chckFullstack" id="chckFullstack"
+                     onclick="manageCheckBox(this)">Fullstack
+              
+                <div>
+                    
+                    <div class="form-check mx-4">
+                        <input class="form-check-input" type="checkbox" name="checkbox" value="chckFEHtml" id="chckFEHtml">Front End
+                    </div>
+
+                <div class="alert alert-dark" id="chckMaster">
+                  
+                  
+                    <div class="form-check mx-4">
+                        <input class="form-check-input" type="checkbox" name="checkbox" value="chckFEHtml" id="chckFEHtml">HTML
+                    </div>
+                    <div class="form-check mx-4">
+                        <input class="form-check-input" type="checkbox" name="checkbox" value="chckFECss" id="chckFECss">CSS
+                    </div>
+                 
+                </div>
+
+            </div>
+
+            </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+
+        function manageCheckBox(e)
+        {
+            let mydiv = e.parentElement.querySelectorAll("input");
+
+            let d = e.checked;
+
+            for(let i =0;i<mydiv.length;i++)
+            {
+                if(d == true)
+                {
+                mydiv[i].checked = true;
+                }
+                else
+                {
+                    mydiv[i].checked = false;
+                }
+            }
+
+
+
+        }
+       
+    </script>
+
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
