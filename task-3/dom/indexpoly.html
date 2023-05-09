@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class FetchDetails
+        {
+            url = "https://frail-plum-crayfish.cyclic.app/api/tutorials";
+            
+          
+
+           async getData(id)
+            {
+                alert("d");
+                let data =  await  fetch(this.url+ "/" + id);
+
+               return await data.json();
+
+            }
+
+
+        }
+
+        let d = new FetchDetails();
+
+        let o = d.getData();
+
+        console.log(o);
+
+        // let o1 = d.getData('645723b30b0189002c70ba5a');
+
+        // console.log(o1);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class FetchDisplay
+        {
+           
+
+            url = "https://frail-plum-crayfish.cyclic.app/api/tutorials"
+
+           
+
+
+        }
+
+        class DisplayData  extends FetchDisplay
+        {
+
+            async getData()
+            {
+               let data =  await  fetch(this.url);
+
+               return await data.json();
+            }
+        }
+
+
+        async function   check()
+        {
+        let d = new DisplayData();
+
+        let d1 = new DisplayData();
+
+        let output = await d.getData();
+
+        console.log(output);
+        }
+
+        check();
+
+
+
+    </script>
+    
+</body>
+</html>
