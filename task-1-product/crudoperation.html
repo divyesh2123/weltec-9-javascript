@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="display">
+
+
+
+    </table>
+
+    <script>
+
+
+function getDataFromtheAPI()
+{
+
+        fetch("https://frail-plum-crayfish.cyclic.app/api/tutorials?page=1&size=10")
+        .then(y=>y.json())
+        .then(y=> {
+
+           let p = y.tutorials.map((value)=> {
+
+                return (`<tr><td>${value.title}</td><td>${value.title}
+                    </td>
+                    <td>
+                        <button onclick="deleteRecordFromAPI('${value.id}')">Delete</button>    
+                        </td>  
+                        
+                        <td>
+                        <button>Edit</button>    
+                        </td>
+                        
+                        </tr>`)
+
+            })
+            
+            document.getElementById("display").innerHTML = p.join(" ");
+
+
+        })
+
+}
+
+
+getDataFromtheAPI();
+
+
+function deleteRecordFromAPI(id)
+{
+    fetch("https://frail-plum-crayfish.cyclic.app/api/tutorials/"+id,
+        {
+            method : "DELETE"
+        }
+    
+    )
+        .then(y=>y.json())
+        .then(y=> {
+            getDataFromtheAPI();
+
+        });
+
+}
+    </script>
+    
+</body>
+</html>
