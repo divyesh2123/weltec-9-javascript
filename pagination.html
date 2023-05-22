@@ -57,7 +57,9 @@
 
            })
 
-           document.getElementById("display").innerHTML = myhtml.join("");    
+           document.getElementById("display").innerHTML = myhtml.join("");  
+           
+           document.getElementById("page"+pageID).style.backgroundColor = "Red";
 
         }
 
@@ -72,7 +74,7 @@
 
             for(let i =1;i<=numberOfPages;i++)
             {
-                html +=`<li class="page-item"><a class="page-link" href="#" onclick="displayData(${i})">${i}</a></li>`
+                html +=`<li class="page-item" id='page${i}'><a class="page-link" href="#" onclick="displayData(${i})">${i}</a></li>`
             }
 
             document.getElementById("pages").innerHTML = html;
